@@ -5,11 +5,11 @@ body {
 }
 
 #heading {
-    font-size:50px;
+    font-size:40px;
     color:rgb(255, 255, 255);
     background-color:deeppink;
     margin-top: 0;
-    height: 175px;
+    height: 150px;
     border-radius: 20px;
     padding-top: 10px;
     font-variant: small-caps;
@@ -28,6 +28,8 @@ body {
 }
 
 canvas {
-    border: 5px solid purple;
+    border: 5px dashed rgb(119, 0, 255);
+    margin-top: 150px;
+    border-radius: 50px;
     
 }
