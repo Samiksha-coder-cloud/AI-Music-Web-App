@@ -7,6 +7,12 @@ rightWristY = 0;
 leftWristX = 0;
 leftWristY = 0;
 
+score_leftWrist = 0;
+score_rightWrist = 0;
+
+disneyTheme_status = "";
+harryPotter_status = "";
+
 function preload() {
     disneyTheme_song = loadSound("disney_theme_song.mp3");
     harryPotter_song = loadSound("harry_potter_song.mp3");
@@ -29,11 +35,29 @@ function modelLoaded() {
 
 function draw() {
     image(video, 0, 0, 600, 400);
+    fill("#ff0000");
+    stroke("#6e2bc8");
+
+    disneyTheme_status = disneyTheme_song.isPlaying();
+
+    if (score_leftWrist > 0.2) {
+        circle(leftWristX, leftWristY, 20);
+
+        harryPotter_song.stop()
+
+        if (disneyTheme_status == false) {
+            disneyTheme_song.play();
+
+            document.getElementById("song_name").innerHTML = "Playing Disney Theme Song";
+        }
+    }
 }
 
 function gotPoses(results) {
     if (results.length > 0) {
         console.log(results);
+        
+        score_leftWrist = results[0].pose.keypoints[9].score;
 
         leftWristX = results[0].pose.leftWrist.x;
         console.log("Left Wrist X= ", leftWristX);
